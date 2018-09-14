@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E432B3042146751F0040A0A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E432B3032146751F0040A0A4 /* MapKit.framework */; };
 		E432B30621470D840040A0A4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B30521470D840040A0A4 /* MapViewController.swift */; };
+		E438C9C0214A064200104BA2 /* AddRestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */; };
 		E465E47C2134F8BF000FCC0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E465E47B2134F8BF000FCC0B /* AppDelegate.swift */; };
 		E465E4812134F8BF000FCC0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E465E47F2134F8BF000FCC0B /* Main.storyboard */; };
 		E465E4832134F8C1000FCC0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E465E4822134F8C1000FCC0B /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		E432B3032146751F0040A0A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E432B30521470D840040A0A4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantTableViewController.swift; sourceTree = "<group>"; };
 		E465E4782134F8BF000FCC0B /* ZidaneFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZidaneFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E465E47B2134F8BF000FCC0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E465E4802134F8BF000FCC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				E47F30612139EB4E0075E2CC /* RestaurantDetailTableViewCell.swift */,
 				E4CDFC6C2145671F00BEB856 /* ReviewViewController.swift */,
 				E432B30521470D840040A0A4 /* MapViewController.swift */,
+				E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */,
 			);
 			path = ZidaneFood;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4FC089721392DF8000F755D /* Restaurant.swift in Sources */,
+				E438C9C0214A064200104BA2 /* AddRestaurantTableViewController.swift in Sources */,
 				E465E48E2134F9F1000FCC0B /* RestaurantTableViewController.swift in Sources */,
 				E4CDFC6D2145671F00BEB856 /* ReviewViewController.swift in Sources */,
 				E465E490213503BE000FCC0B /* RestaurantTableViewCell.swift in Sources */,

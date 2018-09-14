@@ -52,6 +52,9 @@ class RestaurantTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
     }
+    @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue) {
+   
+    }
     override func viewDidAppear(_ animated: Bool) {
 //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 250.0/255.0, green:
 //            77.0/255.0, blue: 35.0/255.0, alpha: 1.0)

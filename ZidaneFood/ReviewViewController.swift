@@ -9,7 +9,10 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
-
+    @IBOutlet var dilikeButton: UIButton!
+    
+    @IBOutlet var goodButton: UIButton!
+    @IBOutlet var GreatButton: UIButton!
     @IBOutlet var closeButton: UIButton!
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var restaurantReviewImageView : UIImageView!
@@ -37,8 +40,12 @@ class ReviewViewController: UIViewController {
         let combineTransform = scaleTransform.concatenating(translateTransform)
         containerView.transform = combineTransform 
        
-        closeButton.transform = CGAffineTransform(translationX: 10000, y: 0)
+        closeButton.transform = CGAffineTransform(translationX: 800, y: 0)
         
+        GreatButton.transform = CGAffineTransform(translationX: -800, y: 0)
+        goodButton.transform = CGAffineTransform(translationX: 800, y: 0)
+        dilikeButton.transform = CGAffineTransform(translationX: -800, y: 0)
+
         // Do any additional setup after loading the view.
     }
 
@@ -60,6 +67,9 @@ class ReviewViewController: UIViewController {
     
         UIView.animate(withDuration: 1.5, animations: {
             self.closeButton.transform = CGAffineTransform.identity
+            self.GreatButton.transform = CGAffineTransform.identity
+            self.goodButton.transform = CGAffineTransform.identity
+            self.dilikeButton.transform = CGAffineTransform.identity
 
         })
     }
