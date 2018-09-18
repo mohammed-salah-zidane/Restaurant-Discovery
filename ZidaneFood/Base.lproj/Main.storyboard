@@ -170,62 +170,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-lj-bpY">
                                                     <rect key="frame" x="155" y="92" width="64" height="64"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byt-lh-QhP">
-                                                    <rect key="frame" x="62" y="60" width="250" height="128"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvP-t8-4Mz">
-                                                            <rect key="frame" x="50" y="25" width="150" height="35"/>
-                                                            <color key="backgroundColor" red="1" green="0.3426558267" blue="0.101958284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <state key="normal" title="Camera"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="15"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="Camera:" destination="YCH-rs-sUM" eventType="touchUpInside" id="9bh-pM-xeC"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tS7-M2-seT">
-                                                            <rect key="frame" x="50" y="68" width="150" height="35"/>
-                                                            <color key="backgroundColor" red="1" green="0.3426558267" blue="0.101958284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <state key="normal" title="Gallary"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <integer key="value" value="15"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <action selector="gallary:" destination="YCH-rs-sUM" eventType="touchUpInside" id="Kob-Wg-uzf"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="tS7-M2-seT" secondAttribute="trailing" constant="50" id="HDO-Od-sfC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vvP-t8-4Mz" secondAttribute="trailing" constant="50" id="ZqB-Vq-2If"/>
-                                                        <constraint firstItem="vvP-t8-4Mz" firstAttribute="leading" secondItem="byt-lh-QhP" secondAttribute="leading" constant="50" id="h5L-DZ-F4A"/>
-                                                        <constraint firstItem="tS7-M2-seT" firstAttribute="leading" secondItem="byt-lh-QhP" secondAttribute="leading" constant="50" id="nYq-uj-HDY"/>
-                                                        <constraint firstAttribute="bottom" secondItem="tS7-M2-seT" secondAttribute="bottom" constant="25" id="uok-oc-Crm"/>
-                                                        <constraint firstItem="vvP-t8-4Mz" firstAttribute="top" secondItem="byt-lh-QhP" secondAttribute="top" constant="25" id="xqf-OT-o2b"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="50"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="byt-lh-QhP" firstAttribute="leading" secondItem="vIg-bH-ype" secondAttribute="leadingMargin" constant="46" id="C8h-Xo-6OR"/>
-                                                <constraint firstItem="byt-lh-QhP" firstAttribute="centerY" secondItem="3mQ-lj-bpY" secondAttribute="centerY" id="Fsd-i7-7E0"/>
-                                                <constraint firstItem="byt-lh-QhP" firstAttribute="top" secondItem="vIg-bH-ype" secondAttribute="topMargin" constant="49" id="IpG-EJ-CEN"/>
                                                 <constraint firstItem="3mQ-lj-bpY" firstAttribute="centerX" secondItem="vIg-bH-ype" secondAttribute="centerX" id="Q4g-da-1pt"/>
-                                                <constraint firstItem="byt-lh-QhP" firstAttribute="centerX" secondItem="3mQ-lj-bpY" secondAttribute="centerX" id="dpJ-Wc-oA2"/>
                                                 <constraint firstItem="3mQ-lj-bpY" firstAttribute="centerY" secondItem="vIg-bH-ype" secondAttribute="centerY" id="oeW-By-luu"/>
                                                 <constraint firstItem="3mQ-lj-bpY" firstAttribute="top" secondItem="vIg-bH-ype" secondAttribute="topMargin" constant="81" id="sFo-Xh-WFM"/>
                                             </constraints>
@@ -343,6 +290,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButton:" destination="YCH-rs-sUM" eventType="touchUpInside" id="zrX-y7-Jee"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcI-D2-KLc">
                                                     <rect key="frame" x="66" y="31" width="30" height="30"/>
@@ -355,6 +305,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButton:" destination="YCH-rs-sUM" eventType="touchUpInside" id="YxR-Ze-fXQ"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HAVE YOU BEEN HERE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7l-u1-CuR">
                                                     <rect key="frame" x="16" y="0.0" width="197" height="23"/>
@@ -387,13 +340,23 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m7f-TU-Hd6">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="JnQ-Mp-Pne" kind="unwind" unwindAction="unwindToHomeScreenWithSegue:" id="5yO-qK-z7v"/>
+                                <segue destination="JnQ-Mp-Pne" kind="unwind" identifier="unwindToHomeScrean" unwindAction="unwindToHomeScreenWithSegue:" id="5yO-qK-z7v"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="avc-h4-kd3">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveButton:" destination="YCH-rs-sUM" id="LUx-gG-SSX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ChooseSourceImage" destination="byt-lh-QhP" id="Z8t-4U-Lfp"/>
+                        <outlet property="locationTextField" destination="iyk-dV-hYm" id="rnt-Z6-Cnb"/>
+                        <outlet property="nameTextField" destination="CLo-v0-bZj" id="JIC-iL-pgd"/>
+                        <outlet property="noButton" destination="UcI-D2-KLc" id="s43-gB-0Ft"/>
                         <outlet property="photoImageView" destination="3mQ-lj-bpY" id="Qdk-F8-dzr"/>
+                        <outlet property="typeTextField" destination="eG4-Ec-rAi" id="WSj-Ru-gSg"/>
+                        <outlet property="yesButton" destination="dnO-rg-4ak" id="lPQ-01-x4e"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiR-gd-pmA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,34 +8,51 @@
 
 import UIKit
 
-class AddRestaurantTableViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate  {
+class AddRestaurantTableViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,UITextFieldDelegate {
  
+    @IBOutlet var noButton: UIButton!
+    @IBOutlet var yesButton: UIButton!
+    @IBOutlet var locationTextField: UITextField!
+    @IBOutlet var typeTextField: UITextField!
+    @IBOutlet var nameTextField: UITextField!
     @IBOutlet var photoImageView:UIImageView!
-    @IBAction func gallary(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let imagePicker = UIImagePickerController()
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .photoLibrary
-            present(imagePicker,animated: true,completion: nil)
+    var isVisited = false
+    
+    @IBAction func saveButton(_ sender: Any)
+    {
+        if nameTextField.text != "" || typeTextField.text != "" || locationTextField.text != "" {
+            print(nameTextField.text!)
+            print(typeTextField.text!)
+            print(locationTextField.text!)
+            print("Have Been Here : yes")
+        }else{
+            let alert = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. please note that all field are required. ", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert ,animated: true,completion: nil)
+            return
+        }
+        
+        performSegue(withIdentifier: "unwindToHomeScrean", sender: self)
+    }
+    
+    @IBAction func toggleBeenHereButton(_ sender: UIButton) {
+  
+        if sender == yesButton {
+            isVisited = true
+            yesButton.backgroundColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+            noButton.backgroundColor = UIColor.gray
+        }else if sender == noButton {
+            isVisited = false
+            noButton.backgroundColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+            yesButton.backgroundColor = UIColor.gray
         }
     
     }
-    
-    @IBAction func Camera(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            let imagePicker = UIImagePickerController()
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .camera
-            present(imagePicker,animated: true,completion: nil)
-        }
-    }
-    @IBOutlet var ChooseSourceImage: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        ChooseSourceImage.transform = CGAffineTransform.init(scaleX:0,y:0)
-        
+            
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,14 +77,14 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
                     imagePicker.delegate = self
                     imagePicker.allowsEditing = false
                     imagePicker.sourceType = .camera
-                   self.present(imagePicker,animated: true,completion: nil)
+                    self.present(imagePicker,animated: true,completion: nil)
                 }
             }
             let galleryAction = UIAlertAction(title: "Photo Library", style: .default) { (action: UIAlertAction!) in
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                     let imagePicker = UIImagePickerController()
                     imagePicker.delegate = self
-                    imagePicker.allowsEditing = false
+                    imagePicker.allowsEditing = true
                     imagePicker.sourceType = .photoLibrary
                     self.present(imagePicker,animated: true,completion: nil)
                 }
@@ -89,8 +106,29 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
             photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
         }
+        let leadingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .leading, relatedBy: .equal, toItem: photoImageView.superview, attribute: .leading, multiplier: 1, constant: 0)
+        leadingConstraint.isActive = true
+        let trailingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .trailing, relatedBy: .equal, toItem: photoImageView.superview, attribute: .trailing, multiplier: 1, constant: 0)
+        trailingConstraint.isActive = true
+
+        let bottomConstraint = NSLayoutConstraint(item: photoImageView, attribute: .bottom, relatedBy: .equal, toItem: photoImageView.superview, attribute: .bottom, multiplier: 1, constant: 0)
+        bottomConstraint.isActive = true
+
+        let topConstraint = NSLayoutConstraint(item: photoImageView, attribute: .top, relatedBy: .equal, toItem: photoImageView.superview, attribute: .top, multiplier: 1, constant: 0)
+        topConstraint.isActive = true
+
+        
         dismiss(animated: true, completion: nil)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
     // MARK: - Table view data source
 
     /*
