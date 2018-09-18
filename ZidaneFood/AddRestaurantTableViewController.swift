@@ -24,7 +24,7 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
             print(nameTextField.text!)
             print(typeTextField.text!)
             print(locationTextField.text!)
-            print("Have Been Here : yes")
+            print("Have Been Here : Yes")
         }else{
             let alert = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. please note that all field are required. ", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
