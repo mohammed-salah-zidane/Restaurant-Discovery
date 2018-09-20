@@ -13,7 +13,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
     @IBOutlet var DetailTableView: UITableView!
     
     @IBOutlet var restaurantImageView :UIImageView!
-    var restaurant : Restaurant!
+    var restaurant : RestaurantMO!
     @IBOutlet var mapView: MKMapView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +36,9 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
             cell.valueLabel.text = restaurant.phone
         case 4:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = restaurant.isVisited ? "yes, I have been here before \(restaurant.rating)" : "No"
+            if let ratingFeedBack = restaurant.rating {
+            cell.valueLabel.text = restaurant.isVisited ? "yes, I have been here before \(ratingFeedBack)" : "No"
+            }
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
@@ -59,6 +61,9 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
             default : break
             }
         }
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.saveContext()
+        }
         DetailTableView.reloadData()
         
     }
@@ -69,7 +74,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showMap))
         mapView.addGestureRecognizer(tapGestureRecognizer)
         
-        restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantImageView.image = UIImage(data: restaurant.image! )
         DetailTableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue:
             240.0/255.0, alpha: 0.2)
       //  DetailTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -79,7 +84,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
         DetailTableView.rowHeight = UITableViewAutomaticDimension
     
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location) { (placemarks, error) in
+        geoCoder.geocodeAddressString(restaurant.location!) { (placemarks, error) in
             if error != nil {
                 print(error!)
             }else{

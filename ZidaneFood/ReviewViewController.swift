@@ -17,7 +17,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var restaurantReviewImageView : UIImageView!
     @IBOutlet var containerView: UIView!
-    var restaurant:Restaurant!
+    var restaurant:RestaurantMO?
    
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class ReviewViewController: UIViewController {
 //        backgroundImageView.addSubview(blurEffectView)
         
     
-        restaurantReviewImageView.image = UIImage(named: restaurant.image)
+        restaurantReviewImageView.image = UIImage(data: (restaurant?.image)! )
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds

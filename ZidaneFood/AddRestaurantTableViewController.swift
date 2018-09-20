@@ -12,28 +12,39 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
  
     @IBOutlet var noButton: UIButton!
     @IBOutlet var yesButton: UIButton!
+    @IBOutlet var phoneTextField: UITextField!
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var typeTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var photoImageView:UIImageView!
     var isVisited = false
-    
     @IBAction func saveButton(_ sender: Any)
     {
-        if nameTextField.text != "" || typeTextField.text != "" || locationTextField.text != "" {
-            print(nameTextField.text!)
-            print(typeTextField.text!)
-            print(locationTextField.text!)
-            print("Have Been Here : Yes")
-        }else{
+        if nameTextField.text == "" || typeTextField.text == "" || locationTextField.text == "" {
             let alert = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. please note that all field are required. ", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(okAction)
             present(alert ,animated: true,completion: nil)
             return
         }
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
+            restaurant.name = nameTextField.text
+            restaurant.type = typeTextField.text
+            restaurant.phone = phoneTextField.text
+            restaurant.location = locationTextField.text
+            restaurant.isVisited = isVisited
+            
+            if let restaurantImage = photoImageView.image {
+                if let imageData = UIImagePNGRepresentation(restaurantImage){
+                    restaurant.image = imageData
+                }
+            }
         
-        performSegue(withIdentifier: "unwindToHomeScrean", sender: self)
+            print("saving data to context...")
+            appDelegate.saveContext()
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func toggleBeenHereButton(_ sender: UIButton) {
