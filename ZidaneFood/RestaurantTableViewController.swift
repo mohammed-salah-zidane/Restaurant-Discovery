@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 class RestaurantTableViewController: UITableViewController,NSFetchedResultsControllerDelegate,UISearchResultsUpdating,UISearchBarDelegate {
     
+    @IBOutlet var searchFooter: UILabel!
     
     var restaurants :[RestaurantMO] = []
     var fetchResultController :NSFetchedResultsController<RestaurantMO>!
@@ -96,7 +97,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         searchResults = restaurants.filter({ (restaurant) -> Bool in
             if let name = restaurant.name, let location = restaurant.location ,let type = restaurant.type{
                 let isMatch = name.lowercased().contains(searchText.lowercased()) ||  location.lowercased().contains(searchText.lowercased()) ||  type.lowercased().contains(searchText.lowercased())
-               
+                
                 let doesTypeMatch = (scope == "All" ) || (type.lowercased() == scope.lowercased())
                 if searchBarIsEmpty(){
                     return doesTypeMatch
@@ -108,6 +109,29 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
             }
             return false
         })
+    }
+    func isFliteringToShow(filterItemCount:Int , of totalItemCount:Int){
+        if filterItemCount == 0 {
+            searchFooter.text = "No items match your query"
+            showFooter()
+        }else{
+            searchFooter.text = "Filtering \(filterItemCount) of \(totalItemCount)"
+            showFooter()
+        }
+    }
+    func notFilteringToShow(){
+        searchFooter.text = ""
+        hideFooter()
+    }
+    func showFooter() {
+        UIView.animate(withDuration: 0.7) {[unowned self] in
+            self.searchFooter.alpha = 1.0
+        }
+    }
+    func hideFooter() {
+        UIView.animate(withDuration: 0.7) {[unowned self] in
+            self.searchFooter.alpha = 0.0
+        }
     }
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -161,6 +185,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         // #warning Incomplete implementation, return the number of rows
        
         if isFiltering() {
+            isFliteringToShow(filterItemCount: searchResults.count, of: restaurants.count)
           return  searchResults.count
         }else{
             return restaurants.count
