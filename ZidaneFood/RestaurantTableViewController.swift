@@ -188,6 +188,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
             isFliteringToShow(filterItemCount: searchResults.count, of: restaurants.count)
           return  searchResults.count
         }else{
+            notFilteringToShow()
             return restaurants.count
         }
     }
