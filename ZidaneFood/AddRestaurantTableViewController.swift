@@ -51,11 +51,12 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
   
         if sender == yesButton {
             isVisited = true
-            yesButton.backgroundColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+            
+            yesButton.backgroundColor = UIColor(red: 250.0/255.0, green: 77.0/255.0, blue: 35.0/255.0, alpha: 1.0)
             noButton.backgroundColor = UIColor.gray
         }else if sender == noButton {
             isVisited = false
-            noButton.backgroundColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+            noButton.backgroundColor =  UIColor(red: 250.0/255.0, green: 77.0/255.0, blue: 35.0/255.0, alpha: 1.0)
             yesButton.backgroundColor = UIColor.gray
         }
     
@@ -132,6 +133,9 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
         dismiss(animated: true, completion: nil)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

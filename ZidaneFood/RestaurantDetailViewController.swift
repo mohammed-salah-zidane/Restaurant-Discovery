@@ -21,6 +21,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as!RestaurantDetailTableViewCell
+        let ratingFeedBack = restaurant.rating ?? " "
         switch indexPath.row {
         case 0:
             cell.fieldLabel.text = "Name"
@@ -36,9 +37,8 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
             cell.valueLabel.text = restaurant.phone
         case 4:
             cell.fieldLabel.text = "Been here"
-            if let ratingFeedBack = restaurant.rating {
             cell.valueLabel.text = restaurant.isVisited ? "yes, I have been here before \(ratingFeedBack)" : "No"
-            }
+            
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
