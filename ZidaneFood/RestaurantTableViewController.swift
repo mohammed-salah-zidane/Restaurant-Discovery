@@ -16,7 +16,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
     var fetchResultController :NSFetchedResultsController<RestaurantMO>!
     var searchController : UISearchController!
     var searchResults : [RestaurantMO] = []
-    //   var isChecked = false
+    // var isChecked = false
     
    // var checkAction = UIAlertAction()
    // var checkTitle = ""
@@ -52,6 +52,8 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         tableView.estimatedRowHeight = 36.0
@@ -74,6 +76,15 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         }
         searchController.searchBar.scopeButtonTitles = ["All", "Sea Food", "Candy", "Popular"]
         searchController.searchBar.delegate = self
+        
+        if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough"){
+            return
+        }
+        
+        if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "WalkthroughController") as? WalkthroughPageViewController{
+            present(pageViewController, animated: true ,completion: nil)
+        }
+    
     }
  
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {

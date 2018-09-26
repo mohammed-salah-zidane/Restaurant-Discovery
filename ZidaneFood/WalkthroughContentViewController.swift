@@ -13,7 +13,21 @@ class WalkthroughContentViewController: UIViewController {
     @IBOutlet var headingLabel:UILabel!
     @IBOutlet var contentLabel:UILabel!
     @IBOutlet var contentImageView : UIImageView!
+    @IBOutlet var pageController : UIPageControl!
+    @IBOutlet var forwardButton:UIButton!
     
+    @IBAction func nextButtonTapped(sender: Any){
+        switch index {
+        case 0...1:
+            let pageViewController = parent as? WalkthroughPageViewController
+            pageViewController?.forward(index: index)
+        case 2 :
+            UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
+            dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
+    }
     var index = 0
     var heading = ""
     var imageFile = ""
@@ -25,7 +39,14 @@ class WalkthroughContentViewController: UIViewController {
         
         headingLabel.text = heading
         contentLabel.text = content
-        contentImageView.image = UIImage(named: imageFile)                                  
+        contentImageView.image = UIImage(named: imageFile)
+        pageController.currentPage = index
+        switch index {
+        case 0...1: forwardButton.setTitle("NEXT", for: .normal)
+        case 2 :  forwardButton.setTitle("DONE", for: .normal)
+        default:
+            break
+        }
         // Do any additional setup after loading the view.
     }
 
