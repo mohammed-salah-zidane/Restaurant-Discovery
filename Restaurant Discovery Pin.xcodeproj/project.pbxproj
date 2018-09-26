@@ -147,7 +147,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E465E4732134F8BF000FCC0B /* Build configuration list for PBXProject "Restaurant Discovery" */;
+			buildConfigurationList = E465E4732134F8BF000FCC0B /* Build configuration list for PBXProject "Restaurant Discovery Pin" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -271,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -325,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -346,7 +346,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.m.s.zidane.RestaurantDiscovery;
+				PRODUCT_BUNDLE_IDENTIFIER = com.m.s.zidane.RestaurantDiscoveryPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -365,7 +365,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.m.s.zidane.RestaurantDiscovery;
+				PRODUCT_BUNDLE_IDENTIFIER = com.m.s.zidane.RestaurantDiscoveryPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -375,7 +375,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E465E4732134F8BF000FCC0B /* Build configuration list for PBXProject "Restaurant Discovery" */ = {
+		E465E4732134F8BF000FCC0B /* Build configuration list for PBXProject "Restaurant Discovery Pin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E465E4882134F8C1000FCC0B /* Debug */,
