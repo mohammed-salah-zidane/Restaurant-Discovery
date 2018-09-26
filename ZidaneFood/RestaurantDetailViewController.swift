@@ -81,7 +81,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
         DetailTableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue:
             240.0/255.0, alpha: 0.8)
         DetailTableView.estimatedRowHeight = 36.0
-        DetailTableView.rowHeight = UITableViewAutomaticDimension
+        DetailTableView.rowHeight = UITableView.automaticDimension
     
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(restaurant.location!) { (placemarks, error) in
@@ -96,7 +96,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
                         annotation.coordinate = location.coordinate
                         self.mapView.addAnnotation(annotation)
                         
-                        let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 200, 200)
+                        let region = MKCoordinateRegion.init(center: annotation.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
                         self.mapView.setRegion(region, animated: false)
                     }
                 }

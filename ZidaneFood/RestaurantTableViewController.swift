@@ -55,7 +55,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         tableView.estimatedRowHeight = 36.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         searchController = UISearchController(searchResultsController: nil)
         tableView.tableHeaderView = searchController.searchBar
@@ -280,7 +280,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
             self.present(activityController,animated: true,completion: nil)
           }
         })
-        let deleteAction = UITableViewRowAction(style:  UITableViewRowActionStyle.default, title: "Delete",handler: { (action,
+        let deleteAction = UITableViewRowAction(style:  UITableViewRowAction.Style.default, title: "Delete",handler: { (action,
                 indexPath) -> Void in
                 // Delete the row from the data source
             if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
