@@ -46,6 +46,9 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
         }
+        hideFooter()
+        tableView.tableFooterView?.isHidden = true
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +74,6 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         }
         searchController.searchBar.scopeButtonTitles = ["All", "Sea Food", "Candy", "Popular"]
         searchController.searchBar.delegate = self
-        
     }
  
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -124,6 +126,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         hideFooter()
     }
     func showFooter() {
+        tableView.tableFooterView?.isHidden = false
         UIView.animate(withDuration: 0.7) {[unowned self] in
             self.searchFooter.alpha = 1.0
         }
@@ -132,6 +135,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         UIView.animate(withDuration: 0.7) {[unowned self] in
             self.searchFooter.alpha = 0.0
         }
+        tableView.tableFooterView?.isHidden = true
     }
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -166,8 +170,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
    
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
-
+    
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

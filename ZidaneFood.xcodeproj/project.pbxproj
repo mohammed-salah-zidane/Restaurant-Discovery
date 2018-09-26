@@ -18,6 +18,8 @@
 		E465E48E2134F9F1000FCC0B /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E465E48D2134F9F1000FCC0B /* RestaurantTableViewController.swift */; };
 		E465E490213503BE000FCC0B /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E465E48F213503BE000FCC0B /* RestaurantTableViewCell.swift */; };
 		E47F30622139EB4E0075E2CC /* RestaurantDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F30612139EB4E0075E2CC /* RestaurantDetailTableViewCell.swift */; };
+		E4A189C62159602200D58524 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A189C52159602200D58524 /* WalkthroughContentViewController.swift */; };
+		E4A189C821597D0A00D58524 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A189C721597D0A00D58524 /* WalkthroughPageViewController.swift */; };
 		E4CDFC6D2145671F00BEB856 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CDFC6C2145671F00BEB856 /* ReviewViewController.swift */; };
 		E4EF7336213ABE2400CB1542 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF7335213ABE2400CB1542 /* RestaurantDetailViewController.swift */; };
 		E4FC089721392DF8000F755D /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FC089621392DF8000F755D /* Restaurant.swift */; };
@@ -37,6 +39,8 @@
 		E465E48D2134F9F1000FCC0B /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		E465E48F213503BE000FCC0B /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		E47F30612139EB4E0075E2CC /* RestaurantDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E4A189C52159602200D58524 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		E4A189C721597D0A00D58524 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		E4CDFC6C2145671F00BEB856 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		E4EF7335213ABE2400CB1542 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		E4FC089621392DF8000F755D /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				E432B30521470D840040A0A4 /* MapViewController.swift */,
 				E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */,
 				E434962621537D63001CCB36 /* ZidaneFood.xcdatamodeld */,
+				E4A189C52159602200D58524 /* WalkthroughContentViewController.swift */,
+				E4A189C721597D0A00D58524 /* WalkthroughPageViewController.swift */,
 			);
 			path = ZidaneFood;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 				E434962821537D63001CCB36 /* ZidaneFood.xcdatamodeld in Sources */,
 				E465E48E2134F9F1000FCC0B /* RestaurantTableViewController.swift in Sources */,
 				E4CDFC6D2145671F00BEB856 /* ReviewViewController.swift in Sources */,
+				E4A189C62159602200D58524 /* WalkthroughContentViewController.swift in Sources */,
+				E4A189C821597D0A00D58524 /* WalkthroughPageViewController.swift in Sources */,
 				E465E490213503BE000FCC0B /* RestaurantTableViewCell.swift in Sources */,
 				E465E47C2134F8BF000FCC0B /* AppDelegate.swift in Sources */,
 				E4EF7336213ABE2400CB1542 /* RestaurantDetailViewController.swift in Sources */,
