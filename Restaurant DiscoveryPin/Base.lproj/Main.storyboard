@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D47-Ne-Shj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Itf-7x-hCO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Map View Controller-->
         <scene sceneID="jqT-zi-Bor">
             <objects>
-                <viewController id="D6C-95-CO7" customClass="MapViewController" customModule="ZidaneFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="D6C-95-CO7" customClass="MapViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SeJ-PZ-ajO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,20 +37,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQu-jB-mzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1934" y="640"/>
+            <point key="canvasLocation" x="3044" y="518"/>
         </scene>
         <!--Walkthrough Page View Controller-->
         <scene sceneID="jVr-Od-sx6">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Y4O-91-ebg" customClass="WalkthroughPageViewController" customModule="ZidaneFood" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Y4O-91-ebg" customClass="WalkthroughPageViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT5-T4-gUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2787" y="633"/>
+            <point key="canvasLocation" x="-849" y="-147"/>
         </scene>
         <!--Walkthrough Content View Controller-->
         <scene sceneID="dk5-AG-xIi">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughContentViewController" id="dvX-LI-E86" customClass="WalkthroughContentViewController" customModule="ZidaneFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="dvX-LI-E86" customClass="WalkthroughContentViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tfh-hi-l1J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,13 +78,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="bjU-Gg-2Lu">
-                                <rect key="frame" x="168" y="609" width="39" height="38"/>
+                                <rect key="frame" x="168" y="610" width="39" height="37"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVE-ep-6Zm">
-                                <rect key="frame" x="321" y="611" width="38" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="DCc-pq-G82"/>
-                                </constraints>
+                                <rect key="frame" x="321" y="609" width="38" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -96,18 +93,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.60364718264248707" green="0.076466311222345262" blue="0.027164628825536288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bdQ-mE-ejP" firstAttribute="bottom" secondItem="hVE-ep-6Zm" secondAttribute="bottom" constant="22" id="4cI-eb-LSq"/>
                             <constraint firstItem="EKk-Jq-xhB" firstAttribute="leading" secondItem="bdQ-mE-ejP" secondAttribute="leading" constant="37" id="67y-es-dkH"/>
                             <constraint firstItem="FfL-g8-3VU" firstAttribute="centerX" secondItem="Tfh-hi-l1J" secondAttribute="centerX" id="6Lu-wa-GJz"/>
+                            <constraint firstItem="hVE-ep-6Zm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bjU-Gg-2Lu" secondAttribute="trailing" constant="8" symbolic="YES" id="7zQ-qU-P7K"/>
                             <constraint firstItem="bdQ-mE-ejP" firstAttribute="trailing" secondItem="EKk-Jq-xhB" secondAttribute="trailing" constant="38" id="BHN-aO-ao6"/>
-                            <constraint firstItem="hVE-ep-6Zm" firstAttribute="centerY" secondItem="bjU-Gg-2Lu" secondAttribute="centerY" id="Eyf-jE-jOG"/>
                             <constraint firstItem="JnB-PL-aFU" firstAttribute="centerX" secondItem="Tfh-hi-l1J" secondAttribute="centerX" id="JdD-Yw-XRe"/>
                             <constraint firstItem="FfL-g8-3VU" firstAttribute="top" secondItem="bdQ-mE-ejP" secondAttribute="top" constant="15" id="M6D-V1-35M"/>
                             <constraint firstItem="JnB-PL-aFU" firstAttribute="top" secondItem="EKk-Jq-xhB" secondAttribute="bottom" constant="8" id="PZh-fJ-x76"/>
                             <constraint firstItem="bjU-Gg-2Lu" firstAttribute="centerX" secondItem="bdQ-mE-ejP" secondAttribute="centerX" id="UAS-SL-77P"/>
-                            <constraint firstItem="hVE-ep-6Zm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Tfh-hi-l1J" secondAttribute="trailingMargin" id="j8x-u8-qY8"/>
-                            <constraint firstItem="hVE-ep-6Zm" firstAttribute="leading" secondItem="bjU-Gg-2Lu" secondAttribute="trailing" constant="114" id="pCz-vZ-wZU"/>
+                            <constraint firstItem="bdQ-mE-ejP" firstAttribute="trailing" secondItem="hVE-ep-6Zm" secondAttribute="trailing" constant="16" id="fvF-BA-GHC"/>
                             <constraint firstItem="EKk-Jq-xhB" firstAttribute="top" secondItem="FfL-g8-3VU" secondAttribute="bottom" constant="5.5" id="q00-rR-WE1"/>
+                            <constraint firstItem="bdQ-mE-ejP" firstAttribute="bottom" secondItem="hVE-ep-6Zm" secondAttribute="bottom" constant="24" id="rhh-g4-Bgb"/>
                             <constraint firstItem="bdQ-mE-ejP" firstAttribute="bottom" secondItem="bjU-Gg-2Lu" secondAttribute="bottom" constant="20" id="ujU-vx-Igj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bdQ-mE-ejP"/>
@@ -122,12 +118,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFW-yj-M0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3528.8000000000002" y="637.33133433283365"/>
+            <point key="canvasLocation" x="-202.40000000000001" y="-147.07646176911544"/>
         </scene>
         <!--Restaurant Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RestaurantDetailViewController" customModule="ZidaneFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="RestaurantDetailViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +140,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </mapView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="36" id="pwi-Ud-LhQ" customClass="RestaurantDetailTableViewCell" customModule="ZidaneFood" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="36" id="pwi-Ud-LhQ" customClass="RestaurantDetailTableViewCell" customModule="Restaurant_DiscoveryPin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pwi-Ud-LhQ" id="GHx-rZ-zPm">
@@ -229,12 +225,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1935" y="-147"/>
+            <point key="canvasLocation" x="3044" y="-155"/>
         </scene>
         <!--New Restaurant-->
         <scene sceneID="2ei-UM-rrg">
             <objects>
-                <tableViewController id="YCH-rs-sUM" customClass="AddRestaurantTableViewController" customModule="ZidaneFood" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YCH-rs-sUM" customClass="AddRestaurantTableViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qtP-ld-tzd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -502,12 +498,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IiR-gd-pmA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JnQ-Mp-Pne" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2301.5999999999999" y="-918.89055472263874"/>
+            <point key="canvasLocation" x="2873" y="-857"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="LVi-tQ-rNc">
             <objects>
-                <viewController id="rcr-8Y-va7" customClass="ReviewViewController" customModule="ZidaneFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rcr-8Y-va7" customClass="ReviewViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Zt-Ki-ZIY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -639,13 +635,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9D-Gd-AdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ahh-B8-Aq6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2736.8000000000002" y="-147.07646176911544"/>
+            <point key="canvasLocation" x="3676" y="-147.07646176911544"/>
         </scene>
-        <!--Favourite Food-->
+        <!--Favorite-->
         <scene sceneID="k7F-0I-mvX">
             <objects>
-                <tableViewController id="ssg-VG-1Ba" customClass="RestaurantTableViewController" customModule="ZidaneFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4gM-9h-31S">
+                <tableViewController id="ssg-VG-1Ba" customClass="RestaurantTableViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4gM-9h-31S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -659,15 +655,15 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="fmf-FR-erQ" customClass="RestaurantTableViewCell" customModule="ZidaneFood" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="fmf-FR-erQ" customClass="RestaurantTableViewCell" customModule="Restaurant_DiscoveryPin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fmf-FR-erQ" id="qko-Ux-9b9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eTO-zZ-i1b">
-                                            <rect key="frame" x="10" y="10" width="365" height="84.5"/>
+                                            <rect key="frame" x="10" y="10" width="331" height="84.5"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vff-3h-SBC">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -682,7 +678,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="cPj-4G-oHi">
-                                                    <rect key="frame" x="90" y="0.0" width="275" height="57.5"/>
+                                                    <rect key="frame" x="90" y="0.0" width="241" height="57.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgy-6d-quV">
                                                             <rect key="frame" x="0.0" y="0.0" width="47" height="20.5"/>
@@ -728,7 +724,7 @@
                             <outlet property="delegate" destination="ssg-VG-1Ba" id="8qg-Ob-5pK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favourite Food" id="eAn-hI-BXw">
+                    <navigationItem key="navigationItem" title="Favorite" id="eAn-hI-BXw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CrP-LB-cRK">
                             <connections>
                                 <segue destination="q49-Sx-CuR" kind="presentation" identifier="addRestaurant" id="xYb-ex-qzB"/>
@@ -741,12 +737,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gK2-dl-gMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1303.2" y="-165.96701649175412"/>
+            <point key="canvasLocation" x="2204" y="-147"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favorites-->
         <scene sceneID="8Sn-Su-RUv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D47-Ne-Shj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="favorite" id="8u8-7m-Sbd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="26P-Hr-vSw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -762,7 +759,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPQ-5r-IcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613.60000000000002" y="-147.07646176911544"/>
+            <point key="canvasLocation" x="1552.8" y="-147.07646176911544"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fY9-xa-v0a">
@@ -780,7 +777,47 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SCh-5P-SFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="-932"/>
+            <point key="canvasLocation" x="2204" y="-857"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="rQf-3X-Swh">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Itf-7x-hCO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9cv-m2-LOu">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="D47-Ne-Shj" kind="relationship" relationship="viewControllers" id="9rt-vM-RyC"/>
+                        <segue destination="3nz-Zo-P3C" kind="relationship" relationship="viewControllers" id="xXO-3z-5Yi"/>
+                        <segue destination="IjK-Xw-gua" kind="relationship" relationship="viewControllers" id="sBg-io-ps6"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9T-w6-6Wi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="613.60000000000002" y="-147.07646176911544"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="GeQ-9H-Kb7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="About" id="IjK-Xw-gua" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="4Xt-a3-rNa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5iH-c7-0TF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1553" y="1281"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="YX8-As-YId">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discover" id="3nz-Zo-P3C" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="kI1-Sf-RQq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvg-cn-qk3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1553" y="591"/>
         </scene>
     </scenes>
     <resources>
@@ -789,6 +826,7 @@
         <image name="cafeloisl" width="480" height="480"/>
         <image name="check" width="28" height="28"/>
         <image name="cross" width="24" height="24"/>
+        <image name="favorite" width="17" height="25"/>
         <image name="photoalbum" width="64" height="64"/>
     </resources>
 </document>
