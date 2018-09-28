@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SafariServices
 class AboutTableViewController: UITableViewController {
 
     var sectionTitles = ["Leave Feedback", "Follow Us"]
@@ -62,6 +62,12 @@ class AboutTableViewController: UITableViewController {
             }else if indexPath.row == 1 {
                 performSegue(withIdentifier: "showWebView", sender: self)
             }
+         //follow us section
+        case 1:
+                if let url = URL(string: links[indexPath.row]){
+                    let safariController = SFSafariViewController(url: url)
+                    present(safariController,animated: true,completion: nil)
+                }
             
         default:
             break

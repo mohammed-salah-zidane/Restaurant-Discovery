@@ -49,23 +49,25 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="About" id="tuf-2e-hKB"/>
                     <connections>
-                        <segue destination="9AC-KP-k5T" kind="show" identifier="showWebView" id="bwy-yM-RPV"/>
+                        <segue destination="9AC-KP-k5T" kind="show" identifier="showWebView" id="HCd-Zm-jlP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JT1-am-Ias" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2204" y="1261.6191904047978"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="K0D-k3-MIg">
             <objects>
-                <viewController id="9AC-KP-k5T" sceneMemberID="viewController">
+                <viewController id="9AC-KP-k5T" customClass="WebViewController" customModule="Restaurant_DiscoveryPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="da5-1Q-sBm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Yme-JZ-zqY"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Td-Vh-7bX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

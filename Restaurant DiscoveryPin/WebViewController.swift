@@ -8,25 +8,24 @@
 
 import UIKit
 import WebKit
-class WebViewController: UIViewController ,WKUIDelegate{
 
-     var webView:WKWebView!
+class WebViewController: UIViewController ,WKUIDelegate,WKNavigationDelegate{
+    
+    var webView:WKWebView!
   
     override func loadView() {
         super.loadView()
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
-        
+        webView.navigationDelegate = self
         self.view = webView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       webView.goForward()
-       webView.goForward()
+        
         // Do any additional setup after loading the view.
-        if  let url = URL(string: "https://www.appcoda.com/"){
+        if  let url = URL(string: "https://www.appcoda.com/contact"){
             let request  = URLRequest(url: url)
             webView.load(request)
         }
@@ -34,6 +33,7 @@ class WebViewController: UIViewController ,WKUIDelegate{
     }
     
 
+   
     
 
     /*

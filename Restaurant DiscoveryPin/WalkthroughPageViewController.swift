@@ -19,7 +19,6 @@ class WalkthroughPageViewController: UIPageViewController,UIPageViewControllerDa
         // Do any additional setup after loading the view.
         
         dataSource = self
-        
         if let  startingViewController = contentViewController(at : 0 ){
         
           setViewControllers([startingViewController], direction: .forward, animated: true, completion: nil)

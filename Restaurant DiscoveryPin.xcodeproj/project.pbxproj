@@ -14,6 +14,7 @@
 		E432B30621470D840040A0A4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E432B30521470D840040A0A4 /* MapViewController.swift */; };
 		E434962821537D63001CCB36 /* RestaurantDiscoveryPin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E434962621537D63001CCB36 /* RestaurantDiscoveryPin.xcdatamodeld */; };
 		E438C9C0214A064200104BA2 /* AddRestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */; };
+		E43CFCF4215E6E12000A49AE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43CFCF3215E6E11000A49AE /* WebKit.framework */; };
 		E465E47C2134F8BF000FCC0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E465E47B2134F8BF000FCC0B /* AppDelegate.swift */; };
 		E465E4812134F8BF000FCC0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E465E47F2134F8BF000FCC0B /* Main.storyboard */; };
 		E465E4832134F8C1000FCC0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E465E4822134F8C1000FCC0B /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		E432B30521470D840040A0A4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E434962721537D63001CCB36 /* Restaurant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Restaurant.xcdatamodel; sourceTree = "<group>"; };
 		E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantTableViewController.swift; sourceTree = "<group>"; };
+		E43CFCF3215E6E11000A49AE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E465E4782134F8BF000FCC0B /* Restaurant DiscoveryPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant DiscoveryPin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E465E47B2134F8BF000FCC0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E465E4802134F8BF000FCC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43CFCF4215E6E12000A49AE /* WebKit.framework in Frameworks */,
 				E432B3042146751F0040A0A4 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +74,7 @@
 		E432B3022146751F0040A0A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E43CFCF3215E6E11000A49AE /* WebKit.framework */,
 				E432B3032146751F0040A0A4 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -382,7 +386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.m.s.zidane.RestaurantDiscoveryPin;
+				PRODUCT_BUNDLE_IDENTIFIER = .m.s.zidane.RestaurantDiscoveryPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -401,7 +405,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.m.s.zidane.RestaurantDiscoveryPin;
+				PRODUCT_BUNDLE_IDENTIFIER = .m.s.zidane.RestaurantDiscoveryPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
