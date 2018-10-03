@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>526722006273-vktin30psd57bt2q67h60v3379etecnv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.526722006273-vktin30psd57bt2q67h60v3379etecnv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB_xe0Gq_dGW3bJmfyh_gC4nMvzBwVUn6g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>526722006273</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.m.s.zidane.RestaurantDiscoveryPin</string>
+	<key>PROJECT_ID</key>
+	<string>restaurantdiscoverypin</string>
+	<key>STORAGE_BUCKET</key>
+	<string>restaurantdiscoverypin.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:526722006273:ios:1af53ce488e6b5a7</string>
+	<key>DATABASE_URL</key>
+	<string>https://restaurantdiscoverypin.firebaseio.com</string>
+</dict>
+</plist>

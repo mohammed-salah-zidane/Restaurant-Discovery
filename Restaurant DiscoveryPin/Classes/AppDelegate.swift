@@ -8,27 +8,54 @@
 
 import UIKit
 import CoreData
+import Firebase
+
+let secondaryColor = UIColor(red: 20/255, green: 15/255, blue: 14/255, alpha: 1)
+let  primaryColor  = UIColor(red: 255.0/255.0, green:60.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+//(red: 52/255, green: 148/255, blue: 230/255, alpha: 1)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UINavigationBar.appearance().barTintColor = UIColor(red: 255.0/255.0, green:
-            70.0/255.0, blue: 30.0/255.0, alpha: 1.0)
-        UINavigationBar.appearance().tintColor = UIColor.white
+       
+        FirebaseApp.configure()
+
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AuthStateDidChange, object: Auth.auth(), queue: nil) { _ in
+
+            Auth.auth().addStateDidChangeListener { (auth, user) in
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if user != nil {
+                    print(user?.displayName! as Any)
+                    
+                    let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarViewController
+                    self.window = UIWindow()
+                    self.window?.rootViewController = controller
+                    self.window?.makeKeyAndVisible()
+                    
+                }else{
+                    let controller = storyboard.instantiateViewController(withIdentifier: "InitialViewController") as? initialViewController
+                    self.window = UIWindow()
+                    self.window?.rootViewController = controller
+                    self.window?.makeKeyAndVisible()
+                }
+            }
+        }
+         UINavigationBar.appearance().barTintColor = UIColor.white
+       // UINavigationBar.appearance().tintColor = UIColor(red: 255.0/255.0, green:70.0/255.0, blue: 30.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.init(name: "AvenirNext-DemiBold", size: 24.0)!]
     
         UITabBar.appearance().tintColor =  UIColor(red: 255.0/255.0, green:
             70.0/255.0, blue: 30.0/255.0, alpha: 1.0)
-        UITabBar.appearance().barTintColor = UIColor.black
-      //  UITabBar.appearance().selectionIndicatorImage = UIImage(named: "tabitem-selected")
-        // UITabBar.appearance().barTintColor = UIColor(red: 236.0/255.0, green:240.0/255.0, blue: 241.0/255.0, alpha: 1.0)
+        UITabBar.appearance().barTintColor = UIColor.white
+     
         
-        //  UIApplication.shared.statusBarStyle = .lightContent
-    
         return true
     }
 
@@ -36,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

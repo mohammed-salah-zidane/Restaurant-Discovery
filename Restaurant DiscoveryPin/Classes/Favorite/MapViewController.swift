@@ -13,7 +13,6 @@ class MapViewController: UIViewController,MKMapViewDelegate {
 
     @IBOutlet var mapView:MKMapView!
     var restaurant : RestaurantMO!
-
     
     
     override func viewDidLoad() {

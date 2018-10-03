@@ -36,6 +36,7 @@ class WalkthroughContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         headingLabel.text = heading
         contentLabel.text = content

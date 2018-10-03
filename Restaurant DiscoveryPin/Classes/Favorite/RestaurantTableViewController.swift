@@ -8,21 +8,23 @@
 
 import UIKit
 import CoreData
+import Firebase
 class RestaurantTableViewController: UITableViewController,NSFetchedResultsControllerDelegate,UISearchResultsUpdating,UISearchBarDelegate {
     
     @IBOutlet var searchFooter: UILabel!
     
+    @IBOutlet var profileButton: UIBarButtonItem!
     var restaurants :[RestaurantMO] = []
     var fetchResultController :NSFetchedResultsController<RestaurantMO>!
     var searchController : UISearchController!
     var searchResults : [RestaurantMO] = []
-    // var isChecked = false
+
     
-   // var checkAction = UIAlertAction()
-   // var checkTitle = ""
+    
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
        
         
         navigationController?.hidesBarsOnSwipe = true
@@ -76,14 +78,16 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         }
         searchController.searchBar.scopeButtonTitles = ["All", "Sea Food", "Candy", "Popular"]
         searchController.searchBar.delegate = self
-        
+       
+         
         if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough"){
-            return
-        }
+                return
+            }
         
         if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "WalkthroughController") as? WalkthroughPageViewController{
             present(pageViewController, animated: true ,completion: nil)
         }
+        
     
     }
  
@@ -123,6 +127,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
             return false
         })
     }
+  
     func isFliteringToShow(filterItemCount:Int , of totalItemCount:Int){
         if filterItemCount == 0 {
             searchFooter.text = "No items match your query"
@@ -214,13 +219,12 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         let restaurant = isFiltering() ? searchResults[indexPath.row] : restaurants[indexPath.row]
         
-        cell.nameLabel?.text = restaurant.name
+        cell.usernameLabel?.text = Auth.auth().currentUser?.displayName!
         cell.thumbnailImageView?.image = UIImage(data: restaurant.image!)
-        cell.locationLabel.text = restaurant.location
-        cell.typeLabel.text = restaurant.type
+        cell.aboutLabel?.text = " \(restaurant.name ?? "myrestaurant") restaurant is in \(restaurant.location ?? "Egypt") its type is \(restaurant.type ?? "popular") "
         // Configure the cell...
 
-        cell.accessoryType = restaurant.isVisited ? .checkmark : .none
+        //cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         
         return cell
     }
