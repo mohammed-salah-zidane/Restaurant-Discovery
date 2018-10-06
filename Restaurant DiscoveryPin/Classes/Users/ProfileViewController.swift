@@ -41,6 +41,14 @@ class ProfileViewController: UIViewController {
             emailLabel.text = user.email!
             
         }
+        guard let photoURL = Auth.auth().currentUser?.photoURL else {return}
+        ImageService.getImage(withURL:  photoURL) { (image) in
+            
+            
+
+            self.profileImageView.image = image
+            self.backgroundImageView.image = image
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +56,8 @@ class ProfileViewController: UIViewController {
         
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     
+        self.profileImageView.layer.masksToBounds = true
+        self.profileImageView.clipsToBounds = true
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

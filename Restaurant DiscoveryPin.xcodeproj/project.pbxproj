@@ -16,6 +16,8 @@
 		E434962821537D63001CCB36 /* RestaurantDiscoveryPin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E434962621537D63001CCB36 /* RestaurantDiscoveryPin.xcdatamodeld */; };
 		E438C9C0214A064200104BA2 /* AddRestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */; };
 		E43CFCF4215E6E12000A49AE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E43CFCF3215E6E11000A49AE /* WebKit.framework */; };
+		E45D2D1221664082004B5B7D /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45D2D1121664082004B5B7D /* UserProfile.swift */; };
+		E45D2D1421664616004B5B7D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45D2D1321664616004B5B7D /* UserService.swift */; };
 		E4620DF021629B5B0029F4FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4620DEF21629B5B0029F4FE /* ProfileViewController.swift */; };
 		E4620DF32162A97B0029F4FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4620DF22162A97B0029F4FE /* Main.storyboard */; };
 		E465E47C2134F8BF000FCC0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E465E47B2134F8BF000FCC0B /* AppDelegate.swift */; };
@@ -29,6 +31,7 @@
 		E4A0E67221643CC100CAAF24 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0E67121643CC100CAAF24 /* Toast.swift */; };
 		E4A189C62159602200D58524 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A189C52159602200D58524 /* WalkthroughContentViewController.swift */; };
 		E4A189C821597D0A00D58524 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A189C721597D0A00D58524 /* WalkthroughPageViewController.swift */; };
+		E4C18E4E2168059C006342EB /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C18E4D2168059C006342EB /* ImageService.swift */; };
 		E4CDFC6D2145671F00BEB856 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CDFC6C2145671F00BEB856 /* ReviewViewController.swift */; };
 		E4EF7336213ABE2400CB1542 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EF7335213ABE2400CB1542 /* RestaurantDetailViewController.swift */; };
 		E4F624F4216247B500FC0787 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4F624F3216247B500FC0787 /* GoogleService-Info.plist */; };
@@ -54,6 +57,8 @@
 		E434962721537D63001CCB36 /* Restaurant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Restaurant.xcdatamodel; sourceTree = "<group>"; };
 		E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantTableViewController.swift; sourceTree = "<group>"; };
 		E43CFCF3215E6E11000A49AE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E45D2D1121664082004B5B7D /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		E45D2D1321664616004B5B7D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E4620DEF21629B5B0029F4FE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E4620DF22162A97B0029F4FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E465E4782134F8BF000FCC0B /* Restaurant DiscoveryPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restaurant DiscoveryPin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +74,7 @@
 		E4A0E67121643CC100CAAF24 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E4A189C52159602200D58524 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		E4A189C721597D0A00D58524 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		E4C18E4D2168059C006342EB /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		E4CDFC6C2145671F00BEB856 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		E4EF7335213ABE2400CB1542 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		E4F624F3216247B500FC0787 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -115,6 +121,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E45D2D1021664041004B5B7D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4FC089621392DF8000F755D /* Restaurant.swift */,
+				E45D2D1121664082004B5B7D /* UserProfile.swift */,
+				E434962621537D63001CCB36 /* RestaurantDiscoveryPin.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E4620DF121629B650029F4FE /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,12 +161,12 @@
 		E465E47A2134F8BF000FCC0B /* Restaurant DiscoveryPin */ = {
 			isa = PBXGroup;
 			children = (
+				E45D2D1021664041004B5B7D /* Models */,
 				E4F62504216270EE00FC0787 /* StoryBoards */,
 				E4F624FF21626F2A00FC0787 /* Classes */,
 				E465E4822134F8C1000FCC0B /* Assets.xcassets */,
 				E465E4872134F8C1000FCC0B /* Info.plist */,
 				E4F624F3216247B500FC0787 /* GoogleService-Info.plist */,
-				E434962621537D63001CCB36 /* RestaurantDiscoveryPin.xcdatamodeld */,
 			);
 			path = "Restaurant DiscoveryPin";
 			sourceTree = "<group>";
@@ -159,32 +175,33 @@
 			isa = PBXGroup;
 			children = (
 				E465E47B2134F8BF000FCC0B /* AppDelegate.swift */,
+				E4A0E67121643CC100CAAF24 /* Toast.swift */,
+				E45D2D1321664616004B5B7D /* UserService.swift */,
 				E4F624F7216254C400FC0787 /* HelperExtentions.swift */,
 				E4F624FD2162674F00FC0787 /* RoundedWhiteButton.swift */,
 				E4620DF121629B650029F4FE /* Users */,
 				E4F625032162709B00FC0787 /* Authentication */,
 				E4F625022162705100FC0787 /* About */,
 				E4F625012162702900FC0787 /* Walkthrough */,
-				E4F6250021626F3D00FC0787 /* Favorite */,
-				E4A0E67121643CC100CAAF24 /* Toast.swift */,
+				E4F6250021626F3D00FC0787 /* Home */,
 				E46BBFC82165034900AAA179 /* MainTabBarViewController.swift */,
+				E4C18E4D2168059C006342EB /* ImageService.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		E4F6250021626F3D00FC0787 /* Favorite */ = {
+		E4F6250021626F3D00FC0787 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				E465E48D2134F9F1000FCC0B /* RestaurantTableViewController.swift */,
 				E465E48F213503BE000FCC0B /* RestaurantTableViewCell.swift */,
-				E4FC089621392DF8000F755D /* Restaurant.swift */,
 				E4EF7335213ABE2400CB1542 /* RestaurantDetailViewController.swift */,
 				E47F30612139EB4E0075E2CC /* RestaurantDetailTableViewCell.swift */,
 				E4CDFC6C2145671F00BEB856 /* ReviewViewController.swift */,
 				E432B30521470D840040A0A4 /* MapViewController.swift */,
 				E438C9BF214A064200104BA2 /* AddRestaurantTableViewController.swift */,
 			);
-			path = Favorite;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		E4F625012162702900FC0787 /* Walkthrough */ = {
@@ -364,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4FC089721392DF8000F755D /* Restaurant.swift in Sources */,
+				E45D2D1421664616004B5B7D /* UserService.swift in Sources */,
 				E4F624F8216254C400FC0787 /* HelperExtentions.swift in Sources */,
 				E490CEB7216243D200CAD1E9 /* MenuViewController.swift in Sources */,
 				E4FD4395215CFA9800E34761 /* AboutTableViewController.swift in Sources */,
@@ -383,6 +401,8 @@
 				E4FD4397215D0C7F00E34761 /* WebViewController.swift in Sources */,
 				E47F30622139EB4E0075E2CC /* RestaurantDetailTableViewCell.swift in Sources */,
 				E4620DF021629B5B0029F4FE /* ProfileViewController.swift in Sources */,
+				E4C18E4E2168059C006342EB /* ImageService.swift in Sources */,
+				E45D2D1221664082004B5B7D /* UserProfile.swift in Sources */,
 				E4A0E67221643CC100CAAF24 /* Toast.swift in Sources */,
 				E432B30621470D840040A0A4 /* MapViewController.swift in Sources */,
 				E4F624F621624DD900FC0787 /* initialViewController.swift in Sources */,

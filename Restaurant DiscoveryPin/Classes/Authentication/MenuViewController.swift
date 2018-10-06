@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 class MenuViewController: UIViewController {
 
+    @IBOutlet var logoImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var signupButton: UIButton!
@@ -35,7 +36,10 @@ class MenuViewController: UIViewController {
 
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
 
-        
+        let scaleTransform  = CGAffineTransform.init(scaleX: 0 , y : 0)
+        let translateTransform = CGAffineTransform.init(translationX: 0, y: -1000)
+        let combineTransform = scaleTransform.concatenating(translateTransform)
+        logoImageView.transform = combineTransform 
         
         // Do any additional setup after loading the view.
     }
@@ -45,9 +49,10 @@ class MenuViewController: UIViewController {
             return .lightContent
         }
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        logoImageView.layer.cornerRadius = 100
 //        Auth.auth().addStateDidChangeListener { (auth, user) in
 //
 //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -62,6 +67,10 @@ class MenuViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        UIView.animate(withDuration: 3, delay: 0.2 , usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4
+            , options: .curveEaseInOut  , animations: {
+                self.logoImageView.transform = CGAffineTransform.identity
+        }, completion: nil)
       
     }
     /*

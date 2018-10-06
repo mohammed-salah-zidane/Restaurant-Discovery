@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Firebase
+import Photos
 class AddRestaurantTableViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,UITextFieldDelegate {
  
     @IBOutlet var noButton: UIButton!
@@ -18,6 +19,8 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var photoImageView:UIImageView!
     var isVisited = false
+    var imageUrl:String!
+    var imageFileName:String!
     @IBAction func saveButton(_ sender: Any)
     {
         if nameTextField.text == "" || typeTextField.text == "" || locationTextField.text == "" {
@@ -40,13 +43,89 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
                     restaurant.image = imageData
                 }
             }
-        
+            
             print("saving data to context...")
             appDelegate.saveContext()
         }
-        dismiss(animated: true, completion: nil)
+       // dismiss(animated: true, completion: nil)
+        
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        guard let username = Auth.auth().currentUser?.displayName else {return}
+        guard let photoURL = Auth.auth().currentUser?.photoURL else {return}
+        let userProfile = UserProfile(uid: uid, username: username, photoURL: photoURL)
+        guard let name = nameTextField.text else {return }
+        guard let location = locationTextField.text else {return}
+        guard let type = typeTextField.text else {return}
+        guard let phone = locationTextField.text else {return}
+        //  guard let uid = Auth.auth().currentUser?.uid else { return}
+        guard let image = photoImageView.image else {return}
+        guard let imageData = image.jpegData(compressionQuality: 0.75)else {return}
+        // Firebase code here
+
+       
+        
+        let restaurantRef = Database.database().reference().child("Restaurants").childByAutoId()
+        let storageRef = Storage.storage().reference().child("RestaurantsImages/\(Int64.random(in: 1...2266252245)).jpg")
+
+        storageRef.putData(imageData, metadata: nil) { metaData, error in
+            print("in put data")
+            guard let metadata = metaData else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            metadata.contentType = "image/jpg"
+            
+            storageRef.downloadURL(completion: { (url, error) in
+                if let downloadUrl = url {
+                    
+                    let restaurantObject = [
+                        "author": [
+                            "uid": userProfile.uid,
+                            "username": userProfile.username,
+                            "photoURL": userProfile.photoURL.absoluteString
+                        ],
+                        "restaurantImageURL": downloadUrl.absoluteString ,
+                        "restaurantName": name,
+                        "location":location,
+                        "type":type,
+                        "phone":phone,
+                        "isVisited":self.isVisited,
+                        "timestamp": [".sv":"timestamp"]
+                        ] as [String:Any]
+                    
+                    restaurantRef.setValue(restaurantObject, withCompletionBlock: { error, ref in
+                        if  error == nil {
+                            print("setted Value")
+                            
+                            self.dismiss(animated: true, completion: nil)
+                        }else{
+                            
+                            print("upload Failed")
+                        }
+                        
+                    })
+                
+                }else{
+                    print("failed")
+                }
+                   
+                 
+            })
+            
+            
+            // success!
+        }
+      
+        
+        
+        
+ 
+        
     }
-    
+    func saveRestaurant( completion: @escaping ((_ success:Bool)->()))
+    {
+        
+    }
     @IBAction func toggleBeenHereButton(_ sender: UIButton) {
   
         if sender == yesButton {
@@ -64,7 +143,6 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
     override func viewDidLoad() {
         super.viewDidLoad()
 
-            
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,20 +195,28 @@ class AddRestaurantTableViewController: UITableViewController,UIImagePickerContr
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
         {
+            
             photoImageView.image = selectedImage
             photoImageView.contentMode = .scaleAspectFill
             photoImageView.clipsToBounds = true
         }
-        let leadingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .leading, relatedBy: .equal, toItem: photoImageView.superview, attribute: .leading, multiplier: 1, constant: 0)
-        leadingConstraint.isActive = true
-        let trailingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .trailing, relatedBy: .equal, toItem: photoImageView.superview, attribute: .trailing, multiplier: 1, constant: 0)
-        trailingConstraint.isActive = true
-
-        let bottomConstraint = NSLayoutConstraint(item: photoImageView, attribute: .bottom, relatedBy: .equal, toItem: photoImageView.superview, attribute: .bottom, multiplier: 1, constant: 0)
-        bottomConstraint.isActive = true
-
-        let topConstraint = NSLayoutConstraint(item: photoImageView, attribute: .top, relatedBy: .equal, toItem: photoImageView.superview, attribute: .top, multiplier: 1, constant: 0)
-        topConstraint.isActive = true
+        if let asset = info["UIImagePickerControllerPHAsset"] as? PHAsset {
+            if let fileName = (asset.value(forKey: "filename")) as? String {
+               
+                imageFileName = fileName
+                print("image file name" + fileName)
+            }
+        }
+//        let leadingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .leading, relatedBy: .equal, toItem: photoImageView.superview, attribute: .leading, multiplier: 1, constant: 0)
+//        leadingConstraint.isActive = true
+//        let trailingConstraint = NSLayoutConstraint(item: photoImageView, attribute: .trailing, relatedBy: .equal, toItem: photoImageView.superview, attribute: .trailing, multiplier: 1, constant: 0)
+//        trailingConstraint.isActive = true
+//
+//        let bottomConstraint = NSLayoutConstraint(item: photoImageView, attribute: .bottom, relatedBy: .equal, toItem: photoImageView.superview, attribute: .bottom, multiplier: 1, constant: 0)
+//        bottomConstraint.isActive = true
+//
+//        let topConstraint = NSLayoutConstraint(item: photoImageView, attribute: .top, relatedBy: .equal, toItem: photoImageView.superview, attribute: .top, multiplier: 1, constant: 0)
+//        topConstraint.isActive = true
 
         
         dismiss(animated: true, completion: nil)

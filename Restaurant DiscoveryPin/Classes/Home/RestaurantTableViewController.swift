@@ -14,12 +14,18 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
     @IBOutlet var searchFooter: UILabel!
     
     @IBOutlet var profileButton: UIBarButtonItem!
-    var restaurants :[RestaurantMO] = []
+    
+    var activityView:UIActivityIndicatorView!
+
+    var restaurants :[Restaurant] = []
     var fetchResultController :NSFetchedResultsController<RestaurantMO>!
     var searchController : UISearchController!
-    var searchResults : [RestaurantMO] = []
-
-    
+    var searchResults : [Restaurant] = []
+    var restaurantImage:[UIImage]!
+    var profileImage :UIImage!
+    let loadingView = UIView()
+    let spinner = UIActivityIndicatorView()
+    let loadingLabel = UILabel()
     
    
     override func viewWillAppear(_ animated: Bool) {
@@ -28,23 +34,23 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
        
         
         navigationController?.hidesBarsOnSwipe = true
-        let fetchRequest :NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
-        let sortDiscriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDiscriptor]
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            let contex = appDelegate.persistentContainer.viewContext
-            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: contex, sectionNameKeyPath: nil, cacheName: nil)
-            fetchResultController.delegate = self
-            do
-            {
-                try fetchResultController.performFetch()
-                if let fetchedObjects = fetchResultController.fetchedObjects {
-                    restaurants = fetchedObjects
-                }
-            }catch{
-                print(error)
-            }
-        }
+//        let fetchRequest :NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
+//        let sortDiscriptor = NSSortDescriptor(key: "name", ascending: true)
+//        fetchRequest.sortDescriptors = [sortDiscriptor]
+//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//            let contex = appDelegate.persistentContainer.viewContext
+//            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: contex, sectionNameKeyPath: nil, cacheName: nil)
+//            fetchResultController.delegate = self
+//            do
+//            {
+//                try fetchResultController.performFetch()
+//                if let fetchedObjects = fetchResultController.fetchedObjects {
+//                    restaurants = fetchedObjects
+//                }
+//            }catch{
+//                print(error)
+//            }
+//        }
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = false
         }
@@ -55,9 +61,8 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
+        setLoadingScreen()
         tableView.estimatedRowHeight = 36.0
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -79,18 +84,94 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         searchController.searchBar.scopeButtonTitles = ["All", "Sea Food", "Candy", "Popular"]
         searchController.searchBar.delegate = self
        
-         
+        observeRestaurants()
+        
+        
         if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough"){
-                return
+            return
             }
         
         if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "WalkthroughController") as? WalkthroughPageViewController{
             present(pageViewController, animated: true ,completion: nil)
         }
-        
-    
     }
- 
+    func observeRestaurants() {
+        let restaurantsRef = Database.database().reference().child("Restaurants")
+        let queryRef =  restaurantsRef.queryOrdered(byChild: "timestamp")
+        queryRef.observe(.value, with: { snapshot in
+           // print(snapshot as Any)
+            var tempRestaurants = [Restaurant]()
+           // print(snapshot.value as Any)
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                    let dict = childSnapshot.value as? [String:Any],
+                    let author = dict["author"] as? [String:Any],
+                    let uid = author["uid"] as? String,
+                    let username = author["username"] as? String,
+                    let photoURL = author["photoURL"] as? String,
+                    let restaurantPhotoURL = dict["restaurantImageURL"] as? String,
+                    let url = URL(string:photoURL),
+                    let restaurantImageUrl = URL(string: restaurantPhotoURL),
+                    let name = dict["restaurantName"] as? String,
+                    let location = dict["location"] as? String,
+                    let type = dict["type"] as? String,
+                    let phone = dict["phone"] as? String,
+                    let isVisited = dict["isVisited"] as? Bool,
+                    let timestamp = dict["timestamp"] as? Double {
+                    let userProfile = UserProfile(uid: uid, username: username, photoURL: url)
+                    let restaurant = Restaurant(id: childSnapshot.key, author: userProfile, name: name, type: type, location: location, phone: phone, imageURL: restaurantImageUrl, isVisited: isVisited, timestamp: timestamp)
+                    
+                    tempRestaurants.insert(restaurant, at: 0)
+                }
+            }
+            
+            self.restaurants = tempRestaurants
+            if !self.restaurants.isEmpty 	{
+            
+               self.removeLoadingScreen()
+                self.tableView.reloadData()
+               
+            }
+        })
+    }
+    // Set the activity indicator into the main view
+    private func setLoadingScreen() {
+        
+        // Sets the view which contains the loading text and the spinner
+        let width: CGFloat = 120
+        let height: CGFloat = 30
+        let x = (tableView.frame.width / 2) - (width / 2)
+        let y = (tableView.frame.height / 2) - (height / 2) - (navigationController?.navigationBar.frame.height)!
+        loadingView.frame = CGRect(x: x, y: y, width: width, height: height)
+        
+        // Sets loading text
+        loadingLabel.textColor = .gray
+        loadingLabel.textAlignment = .center
+        loadingLabel.text = "Loading..."
+        loadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+        
+        // Sets spinner
+        spinner.style = .gray
+        spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        spinner.startAnimating()
+        
+        // Adds text and spinner to the view
+        loadingView.addSubview(spinner)
+        loadingView.addSubview(loadingLabel)
+        
+        tableView.addSubview(loadingView)
+        
+    }
+    
+    // Remove the activity indicator from the main view
+    private func removeLoadingScreen() {
+        
+        // Hides and stops the text and the spinner
+        spinner.stopAnimating()
+        spinner.isHidden = true
+        loadingLabel.isHidden = true
+        
+    }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContent(for: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
@@ -102,6 +183,7 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
             tableView.reloadData()
         }
     }
+    
     func isFiltering()->Bool{
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         
@@ -112,19 +194,22 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
     }
     func filterContent(for searchText:String,scope:String = "All"){
         searchResults = restaurants.filter({ (restaurant) -> Bool in
-            if let name = restaurant.name, let location = restaurant.location ,let type = restaurant.type{
-                let isMatch = name.lowercased().contains(searchText.lowercased()) ||  location.lowercased().contains(searchText.lowercased()) ||  type.lowercased().contains(searchText.lowercased())
-                
-                let doesTypeMatch = (scope == "All" ) || (type.lowercased() == scope.lowercased())
-                if searchBarIsEmpty(){
-                    return doesTypeMatch
-                }else{
-                    return isMatch && doesTypeMatch
-                
-                }
+           
+            let isMatch = restaurant.name.lowercased().contains(searchText.lowercased()) ||  restaurant.location.lowercased().contains(searchText.lowercased()) ||  restaurant.type.lowercased().contains(searchText.lowercased())
+            
+            let doesTypeMatch = (scope == "All" ) || (restaurant.type.lowercased() == scope.lowercased())
+            if searchBarIsEmpty(){
+                return doesTypeMatch
+            }else{
+                return isMatch && doesTypeMatch
                 
             }
-            return false
+            
+//            if let name = restaurant.name, let location = restaurant.location ,let type = restaurant.type{
+//
+//
+//            }
+           // return false
         })
     }
   
@@ -157,27 +242,27 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
         tableView.beginUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let newIndexPath = newIndexPath {
-                tableView.insertRows(at: [newIndexPath], with: .fade)
-            }
-        case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        case .update:
-            if let indexPath = indexPath {
-                tableView.reloadRows(at: [indexPath], with: .fade)
-            }
-        default:
-            tableView.reloadData()
-        }
-        if let fetchedObjects = controller.fetchedObjects {
-            restaurants = fetchedObjects as! [RestaurantMO]
-        }
-    }
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        switch type {
+//        case .insert:
+//            if let newIndexPath = newIndexPath {
+//                tableView.insertRows(at: [newIndexPath], with: .fade)
+//            }
+//        case .delete:
+//            if let indexPath = indexPath {
+//                tableView.deleteRows(at: [indexPath], with: .fade)
+//            }
+//        case .update:
+//            if let indexPath = indexPath {
+//                tableView.reloadRows(at: [indexPath], with: .fade)
+//            }
+//        default:
+//            tableView.reloadData()
+//        }
+//        if let fetchedObjects = controller.fetchedObjects {
+//            restaurants = fetchedObjects as! [RestaurantMO]
+//        }
+//    }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         tableView.endUpdates()
@@ -215,18 +300,38 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantTableViewCell
-
         //let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         let restaurant = isFiltering() ? searchResults[indexPath.row] : restaurants[indexPath.row]
-        
+        if Auth.auth().currentUser?.uid == restaurant.author.uid{
+        ImageService.getImage(withURL: restaurant.author.photoURL) { (image) in
+            cell.profileImageView.image = image
+             cell.profileImageView.layer.masksToBounds = true
+            cell.profileImageView.layer.cornerRadius = 25
+        }
+        ImageService.getImage(withURL: restaurant.imageURL) { (image) in
+            cell.thumbnailImageView.image = image
+        }
         cell.usernameLabel?.text = Auth.auth().currentUser?.displayName!
-        cell.thumbnailImageView?.image = UIImage(data: restaurant.image!)
-        cell.aboutLabel?.text = " \(restaurant.name ?? "myrestaurant") restaurant is in \(restaurant.location ?? "Egypt") its type is \(restaurant.type ?? "popular") "
+        
+        cell.aboutLabel?.text = " \(restaurant.name ) restaurant is in \(restaurant.location ) its type is \(restaurant.type ) "
+           cell.timePostedLabel.text = restaurant.createdAt.calenderTimeSinceNow()
+        }
         // Configure the cell...
 
         //cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         
+        
         return cell
+    }
+    @objc func showProfile(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "showProfile"{
+             let destinationViewController = segue.destination as! ProfileViewController
+                destinationViewController.backgroundImageView.image = profileImage
+            destinationViewController.profileImageView.image = profileImage
+
+            performSegue(withIdentifier: "showProfile", sender: self)
+        
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRestaurantDetail" {
@@ -289,11 +394,12 @@ class RestaurantTableViewController: UITableViewController,NSFetchedResultsContr
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let shareAction = UITableViewRowAction(style: .default, title: "Share", handler: {
             (action,indexPath) -> Void in
-            let defaultText = "just check in " + self.restaurants[indexPath.row].name!
-            if let imageToShare = UIImage(data: self.restaurants[indexPath.row].image!){
-            let activityController = UIActivityViewController(activityItems: [defaultText,imageToShare], applicationActivities: nil)
+            let defaultText = "just check in " + self.restaurants[indexPath.row].name
+            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
             self.present(activityController,animated: true,completion: nil)
-          }
+//            if let imageToShare = UIImage(data: self.restaurants[indexPath.row].image!){
+//
+//          }
         })
         let deleteAction = UITableViewRowAction(style:  UITableViewRowAction.Style.default, title: "Delete",handler: { (action,
                 indexPath) -> Void in

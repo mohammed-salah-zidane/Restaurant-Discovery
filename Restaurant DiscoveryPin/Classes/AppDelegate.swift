@@ -27,19 +27,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AuthStateDidChange, object: Auth.auth(), queue: nil) { _ in
-
+            
             Auth.auth().addStateDidChangeListener { (auth, user) in
-                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 if user != nil {
-                    print(user?.displayName! as Any)
                     
+//                    UserService.observeUserProfile(user!.uid) { userProfile in
+//                        UserService.currentUserProfile = userProfile
+//                       // print(userProfile!)
+//                    }
+                  
+
                     let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? MainTabBarViewController
                     self.window = UIWindow()
                     self.window?.rootViewController = controller
                     self.window?.makeKeyAndVisible()
                     
                 }else{
+                    UserService.currentUserProfile = nil
+
                     let controller = storyboard.instantiateViewController(withIdentifier: "InitialViewController") as? initialViewController
                     self.window = UIWindow()
                     self.window?.rootViewController = controller

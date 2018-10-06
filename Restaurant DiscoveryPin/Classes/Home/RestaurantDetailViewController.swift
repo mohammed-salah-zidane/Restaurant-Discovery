@@ -13,7 +13,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
     @IBOutlet var DetailTableView: UITableView!
     
     @IBOutlet var restaurantImageView :UIImageView!
-    var restaurant : RestaurantMO!
+    var restaurant : Restaurant!
     @IBOutlet var mapView: MKMapView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -21,7 +21,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as!RestaurantDetailTableViewCell
-        let ratingFeedBack = restaurant.rating ?? " "
+        let ratingFeedBack = restaurant.rating 
         switch indexPath.row {
         case 0:
             cell.fieldLabel.text = "Name"
@@ -74,7 +74,10 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showMap))
         mapView.addGestureRecognizer(tapGestureRecognizer)
         
-        restaurantImageView.image = UIImage(data: restaurant.image! )
+       // restaurantImageView.image = UIImage(data: restaurant.image! )
+        ImageService.getImage(withURL: restaurant.imageURL) { (image) in
+            self.restaurantImageView.image = image
+        }
         DetailTableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue:
             240.0/255.0, alpha: 0.2)
       //  DetailTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -84,7 +87,7 @@ class RestaurantDetailViewController: UIViewController ,UITableViewDataSource,UI
         DetailTableView.rowHeight = UITableView.automaticDimension
     
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location!) { (placemarks, error) in
+        geoCoder.geocodeAddressString(restaurant.location) { (placemarks, error) in
             if error != nil {
                 print(error!)
             }else{
